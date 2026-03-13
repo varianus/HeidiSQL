@@ -4,7 +4,7 @@ unit generic_types;
 
 interface
 
-uses fpjson, jsonparser, SysUtils, RegExpr, SynEditHighlighter, SynHighlighterSQL,
+uses fpjson, jsonparser, SysUtils, RegExpr, SynEditHighlighter, SynHighlighterSQL, LazEditTextAttributes,
   Classes, Generics.Collections, Graphics, dbstructures;
 
 type
@@ -140,8 +140,9 @@ end;
 procedure TAppColorScheme.LoadFromSettings;
 var
   i: Integer;
-  Attri: TSynHighlighterAttributes;
+
   dtc: TDBDatatypeCategoryIndex;
+  Attri: TLazEditTextAttribute;
 begin
   Name := _('Current custom settings');
   for i:=0 to SynSqlSyn.AttrCount - 1 do begin
@@ -179,7 +180,8 @@ end;
 procedure TAppColorScheme.Apply;
 var
   i: Integer;
-  Attri: TSynHighlighterAttributes;
+  Attri: TLazEditTextAttribute;
+
 begin
   // Highlighter colors
   for i:=0 to SynSqlSyn.AttrCount - 1 do begin

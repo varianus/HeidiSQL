@@ -5,10 +5,10 @@ unit table_editor;
 interface
 
 uses
-  SysUtils, Classes, Graphics, Controls, Forms, Dialogs, StdCtrls,
+  SysUtils, Classes, Controls, Forms, Dialogs, StdCtrls,
   ComCtrls, laz.VirtualTrees, RegExpr, ExtCtrls, SynEdit,
   {$IFDEF Windows} ActiveX {$ELSE} laz.FakeActiveX {$ENDIF},
-  Menus, Clipbrd, Math, {$IFNDEF FREEBSD}System.UITypes,{$ENDIF} Generics.Collections, LCLProc, LCLType,
+  Menus, Clipbrd, Math, {$IFNDEF FREEBSD}System.UITypes,{$ENDIF} Graphics, Generics.Collections, LCLProc, LCLType,
   {grideditlinks,} dbstructures, dbstructures.mysql, dbconnection, apphelpers, generic_types, StrUtils, extra_controls;
 
 type

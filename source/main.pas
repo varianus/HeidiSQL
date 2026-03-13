@@ -15,7 +15,7 @@ uses
   LazStringUtils, dbconnection, dbstructures, dbstructures.mysql, generic_types,
   apphelpers, extra_controls, createdatabase, SynEditMarkup, SynEditMarkupBracket,
   searchreplace, ImgList, IniFiles, LazFileUtils, LazUTF8, tabletools,
-  lazaruscompat, extfiledialog, process, SynEditMiscClasses, Contnrs;
+  lazaruscompat, extfiledialog, process, SynEditMiscClasses, LazEditTextAttributes, Contnrs;
 
 
 type
@@ -7104,7 +7104,7 @@ var
   Editor: TSynMemo;
   Token: String;
   CaretStart, CaretTokenTypeInt: Integer;
-  Attri: TSynHighlighterAttributes;
+  Attri: TLazEditTextAttribute;
   Proposal: TSynCompletion;
   p: TPoint;
   LineIdx, ColIdx, StartCol, EndCol: Integer;
@@ -7320,7 +7320,7 @@ procedure TMainForm.SynMemoQueryShowHint(Sender: TObject; HintInfo: PHintInfo);
 var
   Edit: TSynEdit;
   Token: String;
-  Attri: TSynHighlighterAttributes;
+  Attri: TLazEditTextAttribute;
   TokenType, TokenStart: Integer;
   RowColPos: TPoint;
   SQLFunc: TSQLFunction;
@@ -13264,8 +13264,8 @@ var
   Editors: TComponentList;
   BaseEditor: TSynMemo;
   KeyStroke: TSynEditKeyStroke;
-  Attri: TSynHighlighterAttributes;
   Shortcut1, Shortcut2: TShortcut;
+  Attri: TLazEditTextAttribute;
 begin
   // Setup all known TSynMemo's
   // This version includes global settings for keyboard shortcut, highlighting and completion proposal

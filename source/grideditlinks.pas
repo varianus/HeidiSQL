@@ -7,10 +7,10 @@ unit grideditlinks;
 interface
 
 uses
-  Forms, Graphics, Messages, laz.VirtualTrees, ComCtrls, SysUtils, Classes,
+  Forms,  Messages, laz.VirtualTrees, ComCtrls, SysUtils, Classes,
   StdCtrls, ExtCtrls, CheckLst, Controls, Types, Dialogs, Menus, MaskEdit, DateUtils, Math,
   dbconnection, dbstructures, apphelpers, generic_types, texteditor, bineditor, lazaruscompat,
-  {$IFNDEF FREEBSD}System.UITypes,{$ENDIF} RegExpr, extra_controls, EditBtn, LCLType, LCLIntf;
+  {$IFNDEF FREEBSD}System.UITypes,{$ENDIF} Graphics, RegExpr, extra_controls, EditBtn, LCLType, LCLIntf;
 
 type
   // Radio buttons and checkboxes which do not pass <Enter> key to their parent control
@@ -1878,7 +1878,7 @@ procedure TDataTypeEditorLink.DoTreeSelectPaintText(Sender: TBaseVirtualTree;
 begin
   // Give datatype column specific color, as set in preferences
   case Sender.GetNodeLevel(Node) of
-    0: TargetCanvas.Font.Style := TargetCanvas.Font.Style + [fsBold];
+    0: TargetCanvas.Font.Style := TFontStyles(TargetCanvas.Font.Style + [fsBold]);
     1: if not (vsSelected in Node.States) then
       TargetCanvas.Font.Color := AppColorSchemes.First.GridTextColors[TDBDatatypeCategoryIndex(Node.Parent.Index)];
   end;

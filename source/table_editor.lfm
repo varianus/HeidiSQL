@@ -6,6 +6,7 @@ object frmTableEditor: TfrmTableEditor
   ClientHeight = 501
   ClientWidth = 700
   LCLVersion = '4.4.0.0'
+  ParentBackground = False
   ParentFont = False
   TabOrder = 0
   object SplitterTopBottom: TSplitter
@@ -342,7 +343,7 @@ object frmTableEditor: TfrmTableEditor
             Options = [coEnabled, coParentBidiMode, coParentColor, coResizable, coShowDropMark, coVisible, coAllowFocus]
             Position = 0
             Text = 'Name'
-            Width = 241
+            Width = 245
           end        
           item
             Options = [coEnabled, coParentBidiMode, coParentColor, coResizable, coShowDropMark, coVisible, coAllowFocus]
@@ -690,7 +691,7 @@ object frmTableEditor: TfrmTableEditor
             Options = [coDraggable, coEnabled, coParentBidiMode, coParentColor, coResizable, coShowDropMark, coVisible, coAllowFocus, coEditable]
             Position = 1
             Text = 'Check clause'
-            Width = 421
+            Width = 425
           end>
         Header.Options = [hoAutoResize, hoColumnResize, hoDrag, hoShowSortGlyphs, hoVisible, hoDisableAnimatedResize]
         Header.PopupMenu = MainForm.popupListHeader
@@ -725,11 +726,12 @@ object frmTableEditor: TfrmTableEditor
         Font.Name = 'Courier New'
         Font.Pitch = fpFixed
         Font.Quality = fqNonAntialiased
+        Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
         TabOrder = 0
         Gutter.LeftOffset = 2
-        Gutter.Width = 59
+        Gutter.Width = 67
         Gutter.MouseActions = <>
         RightGutter.Width = 0
         RightGutter.MouseActions = <>
@@ -745,24 +747,26 @@ object frmTableEditor: TfrmTableEditor
         MouseOptions = [emDragDropEditing]
         VisibleSpecialChars = [vscSpace, vscTabAtLast]
         ReadOnly = True
-        SelectedColor.BackPriority = 50
         SelectedColor.ForePriority = 50
+        SelectedColor.BackPriority = 50
         SelectedColor.FramePriority = 50
         SelectedColor.BoldPriority = 50
         SelectedColor.ItalicPriority = 50
         SelectedColor.UnderlinePriority = 50
         SelectedColor.StrikeOutPriority = 50
+        SelectedColor.ExtendPastEol = True
+        IncrementColor.ExtendPastEol = False
         BracketHighlightStyle = sbhsBoth
-        BracketMatchColor.Background = clNone
         BracketMatchColor.Foreground = clNone
+        BracketMatchColor.Background = clNone
         BracketMatchColor.Style = [fsBold]
-        FoldedCodeColor.Background = clNone
         FoldedCodeColor.Foreground = clGray
+        FoldedCodeColor.Background = clNone
         FoldedCodeColor.FrameColor = clGray
-        MouseLinkColor.Background = clNone
         MouseLinkColor.Foreground = clBlue
-        LineHighlightColor.Background = clNone
+        MouseLinkColor.Background = clNone
         LineHighlightColor.Foreground = clNone
+        LineHighlightColor.Background = clNone
         inline SynLeftGutterPartList1: TSynGutterPartList
           object SynGutterMarks1: TSynGutterMarks
             Width = 24
@@ -770,13 +774,15 @@ object frmTableEditor: TfrmTableEditor
             MaxExtraMarksColums = 0
             Options = [sgmoDeDuplicateMarksOnOverflow]
             MarkupInfo.Background = clBtnFace
-            MarkupInfo.Foreground = clNone
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
           end
           object SynGutterLineNumber1: TSynGutterLineNumber
-            Width = 17
+            Width = 25
             MouseActions = <>
             MarkupInfo.Background = clBtnFace
-            MarkupInfo.Foreground = clNone
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
             DigitCount = 2
             ShowOnlyLineNumbersMultiplesOf = 1
             ZeroStart = False
@@ -787,20 +793,24 @@ object frmTableEditor: TfrmTableEditor
             MouseActions = <>
             ModifiedColor = 59900
             SavedColor = clGreen
-            MarkupInfo.Background = clNone
             MarkupInfo.Foreground = clGreen
             MarkupInfo.FrameColor = 59900
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
           end
           object SynGutterSeparator1: TSynGutterSeparator
             Width = 2
             MouseActions = <>
-            MarkupInfo.Background = clWhite
             MarkupInfo.Foreground = clGray
+            MarkupInfo.Background = clWhite
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
           end
           object SynGutterCodeFolding1: TSynGutterCodeFolding
             MouseActions = <>
-            MarkupInfo.Background = clNone
             MarkupInfo.Foreground = clGray
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
             MouseActionsExpanded = <>
             MouseActionsCollapsed = <>
           end
@@ -822,11 +832,12 @@ object frmTableEditor: TfrmTableEditor
         Font.Name = 'Courier New'
         Font.Pitch = fpFixed
         Font.Quality = fqNonAntialiased
+        Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
         TabOrder = 0
         Gutter.LeftOffset = 2
-        Gutter.Width = 59
+        Gutter.Width = 67
         Gutter.MouseActions = <>
         RightGutter.Width = 0
         RightGutter.MouseActions = <>
@@ -842,24 +853,26 @@ object frmTableEditor: TfrmTableEditor
         MouseOptions = [emDragDropEditing]
         VisibleSpecialChars = [vscSpace, vscTabAtLast]
         ReadOnly = True
-        SelectedColor.BackPriority = 50
         SelectedColor.ForePriority = 50
+        SelectedColor.BackPriority = 50
         SelectedColor.FramePriority = 50
         SelectedColor.BoldPriority = 50
         SelectedColor.ItalicPriority = 50
         SelectedColor.UnderlinePriority = 50
         SelectedColor.StrikeOutPriority = 50
+        SelectedColor.ExtendPastEol = True
+        IncrementColor.ExtendPastEol = False
         BracketHighlightStyle = sbhsBoth
-        BracketMatchColor.Background = clNone
         BracketMatchColor.Foreground = clNone
+        BracketMatchColor.Background = clNone
         BracketMatchColor.Style = [fsBold]
-        FoldedCodeColor.Background = clNone
         FoldedCodeColor.Foreground = clGray
+        FoldedCodeColor.Background = clNone
         FoldedCodeColor.FrameColor = clGray
-        MouseLinkColor.Background = clNone
         MouseLinkColor.Foreground = clBlue
-        LineHighlightColor.Background = clNone
+        MouseLinkColor.Background = clNone
         LineHighlightColor.Foreground = clNone
+        LineHighlightColor.Background = clNone
         inline SynLeftGutterPartList1: TSynGutterPartList
           object SynGutterMarks1: TSynGutterMarks
             Width = 24
@@ -867,13 +880,15 @@ object frmTableEditor: TfrmTableEditor
             MaxExtraMarksColums = 0
             Options = [sgmoDeDuplicateMarksOnOverflow]
             MarkupInfo.Background = clBtnFace
-            MarkupInfo.Foreground = clNone
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
           end
           object SynGutterLineNumber1: TSynGutterLineNumber
-            Width = 17
+            Width = 25
             MouseActions = <>
             MarkupInfo.Background = clBtnFace
-            MarkupInfo.Foreground = clNone
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
             DigitCount = 2
             ShowOnlyLineNumbersMultiplesOf = 1
             ZeroStart = False
@@ -884,20 +899,24 @@ object frmTableEditor: TfrmTableEditor
             MouseActions = <>
             ModifiedColor = 59900
             SavedColor = clGreen
-            MarkupInfo.Background = clNone
             MarkupInfo.Foreground = clGreen
             MarkupInfo.FrameColor = 59900
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
           end
           object SynGutterSeparator1: TSynGutterSeparator
             Width = 2
             MouseActions = <>
-            MarkupInfo.Background = clWhite
             MarkupInfo.Foreground = clGray
+            MarkupInfo.Background = clWhite
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
           end
           object SynGutterCodeFolding1: TSynGutterCodeFolding
             MouseActions = <>
-            MarkupInfo.Background = clNone
             MarkupInfo.Foreground = clGray
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
             MouseActionsExpanded = <>
             MouseActionsCollapsed = <>
           end
@@ -919,11 +938,12 @@ object frmTableEditor: TfrmTableEditor
         Font.Name = 'Courier New'
         Font.Pitch = fpFixed
         Font.Quality = fqNonAntialiased
+        Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
         TabOrder = 0
         Gutter.LeftOffset = 2
-        Gutter.Width = 59
+        Gutter.Width = 67
         Gutter.MouseActions = <>
         RightGutter.Width = 0
         RightGutter.MouseActions = <>
@@ -939,24 +959,26 @@ object frmTableEditor: TfrmTableEditor
         MouseOptions = [emDragDropEditing]
         VisibleSpecialChars = [vscSpace, vscTabAtLast]
         ReadOnly = True
-        SelectedColor.BackPriority = 50
         SelectedColor.ForePriority = 50
+        SelectedColor.BackPriority = 50
         SelectedColor.FramePriority = 50
         SelectedColor.BoldPriority = 50
         SelectedColor.ItalicPriority = 50
         SelectedColor.UnderlinePriority = 50
         SelectedColor.StrikeOutPriority = 50
+        SelectedColor.ExtendPastEol = True
+        IncrementColor.ExtendPastEol = False
         BracketHighlightStyle = sbhsBoth
-        BracketMatchColor.Background = clNone
         BracketMatchColor.Foreground = clNone
+        BracketMatchColor.Background = clNone
         BracketMatchColor.Style = [fsBold]
-        FoldedCodeColor.Background = clNone
         FoldedCodeColor.Foreground = clGray
+        FoldedCodeColor.Background = clNone
         FoldedCodeColor.FrameColor = clGray
-        MouseLinkColor.Background = clNone
         MouseLinkColor.Foreground = clBlue
-        LineHighlightColor.Background = clNone
+        MouseLinkColor.Background = clNone
         LineHighlightColor.Foreground = clNone
+        LineHighlightColor.Background = clNone
         inline SynLeftGutterPartList1: TSynGutterPartList
           object SynGutterMarks1: TSynGutterMarks
             Width = 24
@@ -964,13 +986,15 @@ object frmTableEditor: TfrmTableEditor
             MaxExtraMarksColums = 0
             Options = [sgmoDeDuplicateMarksOnOverflow]
             MarkupInfo.Background = clBtnFace
-            MarkupInfo.Foreground = clNone
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
           end
           object SynGutterLineNumber1: TSynGutterLineNumber
-            Width = 17
+            Width = 25
             MouseActions = <>
             MarkupInfo.Background = clBtnFace
-            MarkupInfo.Foreground = clNone
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
             DigitCount = 2
             ShowOnlyLineNumbersMultiplesOf = 1
             ZeroStart = False
@@ -981,20 +1005,24 @@ object frmTableEditor: TfrmTableEditor
             MouseActions = <>
             ModifiedColor = 59900
             SavedColor = clGreen
-            MarkupInfo.Background = clNone
             MarkupInfo.Foreground = clGreen
             MarkupInfo.FrameColor = 59900
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
           end
           object SynGutterSeparator1: TSynGutterSeparator
             Width = 2
             MouseActions = <>
-            MarkupInfo.Background = clWhite
             MarkupInfo.Foreground = clGray
+            MarkupInfo.Background = clWhite
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
           end
           object SynGutterCodeFolding1: TSynGutterCodeFolding
             MouseActions = <>
-            MarkupInfo.Background = clNone
             MarkupInfo.Foreground = clGray
+            MarkupInfoCurrentLine.Foreground = clNone
+            MarkupInfoCurrentLine.Background = clNone
             MouseActionsExpanded = <>
             MouseActionsCollapsed = <>
           end
@@ -1019,6 +1047,7 @@ object frmTableEditor: TfrmTableEditor
     Caption = 'Columns:'
     ClientHeight = 28
     ClientWidth = 700
+    ParentBackground = False
     TabOrder = 1
     object tlbColumns: TToolBar
       Left = 0

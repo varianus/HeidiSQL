@@ -14,7 +14,7 @@ uses
   StdCtrls, ComCtrls, SynEditHighlighter, SynHighlighterSQL,
   SynEdit, laz.VirtualTrees, SynEditKeyCmds, ActnList, Menus,
   dbstructures, RegExpr, EditBtn, LCLType, StrUtils, SpinEx,
-  extra_controls, reformatter, Buttons, ColorBox, LCLProc, LCLIntf, lazaruscompat, FileUtil,
+  extra_controls, reformatter, Buttons, ColorBox, LCLProc, LCLIntf, lazaruscompat, FileUtil, LazEditTextAttributes,
   vktable, generic_types;
 
 type
@@ -554,7 +554,7 @@ begin
     ')';
   SynSQLSynSQLSample.TableNames.CommaText := 'tableA,tableB';
   for i:=0 to SynSQLSynSQLSample.AttrCount - 1 do begin
-    SynSQLSynSQLSample.Attribute[i].AssignColorAndStyle(FAppColorScheme.SynSqlSyn.Attribute[i]);
+    SynSQLSynSQLSample.Attribute[i].AssignColors(FAppColorScheme.SynSqlSyn.Attribute[i]);
     comboSQLColElement.Items.Add(SynSQLSynSQLSample.Attribute[i].Name);
   end;
   comboSQLColElement.Items.Add(_('Active line background'));
@@ -748,9 +748,10 @@ end;
 procedure TfrmPreferences.SQLFontChange(Sender: TObject);
 var
   AttriIdx: Integer;
-  Attri: TSynHighlighterAttributes;
+  Attri: TLazEditTextAttribute;
   Foreground, Background: TColor;
   FontStyle: Integer;
+
 begin
   if comboSQLFontName.ItemIndex > -1 then
     SynMemoSQLSample.Font.Name := comboSQLFontName.Items[comboSQLFontName.ItemIndex];
@@ -894,8 +895,8 @@ begin
   // Color preset selected
   ColorScheme := AppColorSchemes[comboEditorColorsPreset.ItemIndex];
   for j:=0 to SynSQLSynSQLSample.AttrCount - 1 do begin
-    SynSQLSynSQLSample.Attribute[j].AssignColorAndStyle(ColorScheme.SynSqlSyn.Attribute[j]);
-    FAppColorScheme.SynSqlSyn.Attribute[j].AssignColorAndStyle(ColorScheme.SynSqlSyn.Attribute[j]);
+    SynSQLSynSQLSample.Attribute[j].AssignColors(ColorScheme.SynSqlSyn.Attribute[j]);
+    FAppColorScheme.SynSqlSyn.Attribute[j].AssignColors(ColorScheme.SynSqlSyn.Attribute[j]);
   end;
   SynMemoSQLSample.LineHighlightColor.Background := ColorScheme.ActiveLineBackground;
   SynMemoSQLSample.BracketMatchColor.Foreground := ColorScheme.MatchingBraceForeground;
@@ -956,8 +957,8 @@ end;
 procedure TfrmPreferences.comboSQLColElementChange(Sender: TObject);
 var
   AttriIdx: Integer;
-  Attri: TSynHighlighterAttributes;
   Foreground, Background: TColor;
+  Attri: TLazEditTextAttribute;
 begin
   AttriIdx := comboSQLColElement.ItemIndex;
   if AttriIdx = comboSQLColElement.Items.Count-1 then begin
@@ -1001,7 +1002,7 @@ end;
 procedure TfrmPreferences.SynMemoSQLSampleClick(Sender: TObject);
 var
   Token: String;
-  Attri: TSynHighlighterAttributes;
+  Attri: TLazEditTextAttribute;
   AttriIdx: Integer;
   sm: TSynEdit;
 begin
