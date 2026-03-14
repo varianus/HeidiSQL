@@ -74,12 +74,13 @@ type
     private
       FSQL: String;
       FQuotes: THashedStringList;
+      FEscape: Char;
       procedure SetSQL(Value: String);
       function GetSize: Integer;
       function GetSQLWithoutComments: String; overload;
     public
       constructor Create(NetTypeGroup: TNetTypeGroup);
-      destructor Destroy; overload;
+      destructor Destroy; override;
       class function GetSQLWithoutComments(FullSQL: String): String; overload;
       property Size: Integer read GetSize;
       property SQL: String read FSQL write SetSQL;
@@ -713,10 +714,13 @@ end;
 }
 procedure StreamWrite(S: TStream; Text: String = '');
 var
-  utf8: AnsiString;
+  utf8: UTF8String;
+  L: Integer;
 begin
   utf8 := Utf8Encode(Text);
-  S.Write(utf8[1], Length(utf8));
+  L := Length(utf8);
+  if L > 0 then
+    S.WriteBuffer(utf8[1], L);
 end;
 
 
@@ -3219,19 +3223,21 @@ end;
 
 constructor TSQLBatch.Create(NetTypeGroup: TNetTypeGroup);
 begin
-  inherited;
+  inherited Create;
   FQuotes := THashedStringList.Create;
   FQuotes.CaseSensitive := True;
   FQuotes.Sorted := True;
   FQuotes.Add('"');
   FQuotes.Add('''');
+  FEscape := '\';
   case NetTypeGroup of
     ngMySQL: FQuotes.Add('`'); // MySQL/MariaDB only
     ngPgSQL: FQuotes.Add('$$'); // PostgreSQL only ($abc$ unsupported)
+    ngSQLite: FEscape := '''';
   end;
 end;
 
-destructor TSQLBatch.Destroy; overload;
+destructor TSQLBatch.Destroy;
 begin
   FQuotes.Free;
   inherited;
@@ -3318,7 +3324,7 @@ begin
       end;
     end;
     if not InEscape then
-      InEscape := c = '\'
+      InEscape := c = FEscape
     else
       InEscape := False;
 
